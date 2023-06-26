@@ -1,28 +1,97 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Max_Photo</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="UTF-8">
+    <title>Max_Photo</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>Max_Photo</h1>
-  </header>
+    <header>
+        <div class="container">
+            <h1>Max_Photo</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="button primary">Accueil</a></li>
+                    <li><a href="#" onclick="showGallery()" class="button gradient">Galerie</a></li>
+                    <li><a href="#" class="button secondary">À propos</a></li>
+                    <li><a href="#" class="button secondary">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-  <div class="gallery">
-    <div class="gallery-item">
-      <img src="C:\Users\MAXIME\Desktop\Webwite-Max_photo\Max_Photo\photo\image1.jpg" alt="Image 1">
-      <div class="caption">Description de l'image 1</div>
+    <section id="home">
+        <div class="container">
+            <h2>Bienvenue sur Max_Photo</h2>
+            <p>Découvrez notre collection de magnifiques photos.</p>
+        </div>
+    </section>
+
+    <section id="gallery" style="display: none;">
+        <div class="container">
+            <h2>Galerie de Photos</h2>
+            <div class="gallery-wrapper">
+                <div class="gallery-column">
+                    <div class="gallery-item" onclick="showImage('photo/image1.jpg', 'Légende de la photo 1')">
+                        <img src="photo/image1.jpg" alt="Photo 1">
+                        <div class="caption">Légende de la photo 1</div>
+                    </div>
+                    <div class="gallery-item" onclick="showImage('photo/image2.jpg', 'Légende de la photo 2')">
+                        <img src="photo/image2.jpg" alt="Photo 2">
+                        <div class="caption">Légende de la photo 2</div>
+                    </div>
+                    <!-- Ajoutez d'autres images ici -->
+                </div>
+                <div class="gallery-column">
+                    <div class="gallery-item" onclick="showImage('photo/image3.jpg', 'Légende de la photo 3')">
+                        <img src="photo/image3.jpg" alt="Photo 3">
+                        <div class="caption">Légende de la photo 3</div>
+                    </div>
+                    <div class="gallery-item" onclick="showImage('photo/image4.jpg', 'Légende de la photo 4')">
+                        <img src="photo/image4.jpg" alt="Photo 4">
+                        <div class="caption">Légende de la photo 4</div>
+                    </div>
+                    <!-- Ajoutez d'autres images ici -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="overlay" onclick="hideImage()">
+        <div class="overlay-content">
+            <img id="overlay-image" src="" alt="">
+            <div id="overlay-caption"></div>
+        </div>
     </div>
-    <div class="gallery-item">
-      <img src="chemin/vers/image2.jpg" alt="Image 2">
-      <div class="caption">Description de l'image 2</div>
-    </div>
-    <div class="gallery-item">
-      <img src="chemin/vers/image3.jpg" alt="Image 3">
-      <div class="caption">Description de l'image 3</div>
-    </div>
-    <!-- Ajoutez davantage de div.gallery-item pour plus d'images -->
-  </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Max_Photo. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showImage(imageSrc, imageDescription) {
+            var overlay = document.querySelector('.overlay');
+            var overlayImage = document.getElementById('overlay-image');
+            var overlayCaption = document.getElementById('overlay-caption');
+            overlayImage.src = imageSrc;
+            overlayImage.alt = imageDescription;
+            overlayCaption.textContent = imageDescription;
+            overlay.style.display = 'flex';
+        }
+
+        function hideImage() {
+            var overlay = document.querySelector('.overlay');
+            overlay.style.display = 'none';
+        }
+
+        function showGallery() {
+            var homeSection = document.getElementById('home');
+            var gallerySection = document.getElementById('gallery');
+            homeSection.style.display = 'none';
+            gallerySection.style.display = 'block';
+        }
+    </script>
 </body>
 </html>
